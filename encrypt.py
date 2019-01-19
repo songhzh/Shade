@@ -20,17 +20,18 @@ class Pixels:
         return Image.open(link).convert("RGB").load()
 
     @staticmethod
-    def xor_list(image1, image2):
+    def xor_list(base, *img_list):
         rgb_list = []
 
         for y in range(200):
             for x in range(200):
-                r1, g1, b1 = image1[x, y]
-                r2, g2, b2 = image2[x, y]
-                # print("(", keyR, keyG, keyB, ")", "or", "(", r, g, b, ")")
-                mix = (r1 ^ r2, g1 ^ g2, b1 ^ b2)
-                # print(mix)
-                rgb_list.append(mix)
+                r1, g1, b1 = base[x, y]
+                for img in img_list:
+                    r2, g2, b2 = img[x, y]
+                    r1 ^= r2
+                    g1 ^= g2
+                    b1 ^= b2
+                rgb_list.append((r1, g1, b1))
 
         return rgb_list
 
@@ -42,22 +43,21 @@ class Pixels:
         return out
 
     @staticmethod
-    def encode(image1, image2):
-        return Pixels.create_image(Pixels.xor_list(image1, image2))
+    def encode(base, *img_list):
+        return Pixels.create_image(Pixels.xor_list(base, *img_list))
 
     @staticmethod
-    def display(image1, image2, load=False):
-        img = Pixels.encode(image1, image2)
+    def display(base, *img_list):
+        img = Pixels.encode(base, *img_list)
         img.show()
-        return img.load() if load else img
+        return img
 
 
 if __name__ == "__main__":
     kon = Pixels.open('images/kon.jpg')
     rnm = Pixels.open('images/rnm.png')
     homer = Pixels.open('images/homer.jpg')
-    kon_rnm = Pixels.display(kon, rnm, True)
-    kon_rnm_homer = Pixels.display(kon_rnm, homer)
+    mixed = Pixels.display(kon, rnm, homer)
 
     # list_1 = pix.encode(pix.key, pix.img_1)
     # mid = pix.create_image(list_1)
