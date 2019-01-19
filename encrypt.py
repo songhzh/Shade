@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
     pix.show_image(out_1)
 
-    list_4 = pix.encode(out.load(), pix.key)
+    list_4 = pix.encode(out_1.load(), pix.key)
     out_2 = pix.create_image(list_4)
 
     pix.show_image(out_2)
