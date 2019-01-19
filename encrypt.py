@@ -43,13 +43,10 @@ class Pixels:
         return out
 
     @staticmethod
-    def encode(base, *img_list):
-        return Pixels.create_image(Pixels.xor_list(base, *img_list))
-
-    @staticmethod
-    def display(base, *img_list):
-        img = Pixels.encode(base, *img_list)
-        img.show()
+    def encode(base, *img_list, display=False):
+        img = Pixels.create_image(Pixels.xor_list(base, *img_list))
+        if display:
+            img.show()
         return img
 
 
@@ -57,7 +54,7 @@ if __name__ == "__main__":
     kon = Pixels.open('images/kon.jpg')
     rnm = Pixels.open('images/rnm.png')
     homer = Pixels.open('images/homer.jpg')
-    mixed = Pixels.display(kon, rnm, homer)
+    mixed = Pixels.encode(kon, rnm, homer, display=True)
 
     # list_1 = pix.encode(pix.key, pix.img_1)
     # mid = pix.create_image(list_1)
