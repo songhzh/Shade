@@ -53,12 +53,12 @@ class Encryption:
             if return_arr[-16:].uint == 0:
                 break
 
-        return return_arr
+        return return_arr[:-16]
     
 if __name__ == "__main__":
     ba = Encryption.encode('images/out.png', 'hackathon.txt')
     Pixels.create_image(Pixels.get_img(ba), display=True, save='images/enc.png')
-    
+
     for byte in bb.bytes:
         print(chr(byte), end='')
 

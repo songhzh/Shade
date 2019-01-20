@@ -28,10 +28,9 @@ def upload_file():
     decode_file()
     
     filename = 'decoded.txt'
-
-    return send_file(filename, attachment_filename=filename, as_attachment=True)
+    
+    return send_file(filename , attachment_filename=filename, as_attachment=True)
 
      
 if __name__ == '__main__':
-    os.system('clear')
     app.run(debug=True, port=5000)
