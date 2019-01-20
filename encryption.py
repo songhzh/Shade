@@ -1,6 +1,5 @@
 from PIL import Image
 from bitstring import BitArray
-import os
 import random
 from Pixels import Pixels
 from Bitstream import Bitstream
@@ -62,12 +61,5 @@ if __name__ == "__main__":
     for byte in bb.bytes:
         print(chr(byte), end='')
 
-    # for byte in ba.bytes:
-    #     print(byte)
-    # public_key = "images/key.png"
-    # key = Image.open(public_key)
-    # key_bitstream = Bitstream(Pixels.get_bit_array(key))
-    # ls = Pixels.get_img(key_bitstream)
-    # Pixels.create_image(ls, display=True)
 
 
