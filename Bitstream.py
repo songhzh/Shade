@@ -18,14 +18,14 @@ class Bitstream:
         return file
 
     def __iter__(self):
-        self.idx = len(self.bit_array) - 1
+        self.idx = 0
         return self
 
     def __next__(self):
-        if self.idx < 0:
+        if self.idx >= len(self.bit_array):
             raise StopIteration
         result = self.bit_array[self.idx]
-        self.idx -= 1
+        self.idx += 1
         return result
 
     def __str__(self):
