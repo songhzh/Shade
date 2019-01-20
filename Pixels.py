@@ -29,6 +29,7 @@ class Pixels:
         # out.save("images/out.png")
         return out
 
+    @staticmethod
     def get_byte_array(link):
 
         img = Image.open(link, mode='r')
@@ -45,7 +46,6 @@ class Pixels:
         if display:
             img.show()
         return img
-
 
 
 if __name__ == "__main__":
