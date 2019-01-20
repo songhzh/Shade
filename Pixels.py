@@ -1,6 +1,5 @@
 from PIL import Image
 from bitstring import BitArray
-import io
 
 class Pixels:
     @staticmethod
@@ -24,36 +23,43 @@ class Pixels:
         return rgb_list
 
     @staticmethod
-    def create_image(rgb_list):
+    def create_image(rgb_list, display=False):
         out = Image.new("RGB", (200, 200))
         out.putdata(rgb_list)
         # out.save("images/out.png")
+        if display:
+            out.show()
         return out
+
+    @staticmethod
+    def encode(base, *img_list, display=False):
+        return Pixels.create_image(Pixels.xor_list(base, *img_list), display=display)
 
     @staticmethod
     def get_bit_array(image):
         bits = BitArray()
         data = image.getdata()
 
-        for r, g, b in data:
-            bits.append(bin(r))
-            bits.append(bin(g))
-            bits.append(bin(b))
+        for (r, g, b) in data:
+            bits.append(BitArray(uint=r, length=8))
+            bits.append(BitArray(uint=g, length=8))
+            bits.append(BitArray(uint=b, length=8))
 
         return bits
 
-        # img = Image.open(link, mode='r')
-        # img_byte_arr = io.BytesIO()
-        # img.save(img_byte_arr, format='PNG')
-        # img_byte_arr = img_byte_arr.getvalue()
-        # return BitArray(img_byte_arr)
-
     @staticmethod
-    def encode(base, *img_list, display=False):
-        img = Pixels.create_image(Pixels.xor_list(base, *img_list))
-        if display:
-            img.show()
-        return img
+    def get_img(bit_array):
+        rgb_list = []
+        idx = 0
+        rgb = [None] * 3
+
+        for byte in bit_array.bytes:
+            rgb[idx] = byte
+            idx = (idx + 1) % 3
+            if idx == 0:
+                rgb_list.append(tuple(rgb))
+
+        return rgb_list
 
 
 if __name__ == "__main__":
@@ -62,4 +68,7 @@ if __name__ == "__main__":
     homer = Pixels.open('images/homer.jpg')
     mixed = Pixels.encode(kon, rnm, homer)
     # ret = Pixels.encode(mixed.load(), kon, rnm, display=True)
-    print(Pixels.get_bit_array(mixed))
+    ba = Pixels.get_bit_array(mixed)
+    ls = Pixels.get_img(ba)
+    Pixels.create_image(ls, display=True)
+

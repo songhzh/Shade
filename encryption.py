@@ -19,7 +19,7 @@ class Encryption:
     def convert_bits_message(bits):
         out_message = ""
         for b in bits:
-
+            pass
     # @staticmethod
     # def encrypt(self, message):
     #     message_bits = self.convert_message_bits(message)
