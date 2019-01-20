@@ -16,6 +16,7 @@ class Bitstream:
                     break
                 file.append(byte)
 
+        file.append(BitArray(uint=0, length=16))
         return file
 
     def __iter__(self):

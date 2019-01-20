@@ -4,7 +4,7 @@ from bitstring import BitArray
 class Pixels:
     @staticmethod
     def open(link):
-        return Image.open(link).convert("RGB").load()
+        return Image.open(link).convert('RGB').load()
 
     @staticmethod
     def xor_list(base, *img_list):
@@ -23,12 +23,13 @@ class Pixels:
         return rgb_list
 
     @staticmethod
-    def create_image(rgb_list, display=False):
+    def create_image(rgb_list, display=False, save=''):
         out = Image.new("RGB", (200, 200))
         out.putdata(rgb_list)
-        # out.save("images/out.png")
         if display:
             out.show()
+        if save != '':
+            out.save(save)
         return out
 
     @staticmethod
