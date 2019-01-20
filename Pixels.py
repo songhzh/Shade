@@ -1,5 +1,5 @@
 from PIL import Image
-
+import io
 
 class Pixels:
     @staticmethod
@@ -29,6 +29,16 @@ class Pixels:
         # out.save("images/out.png")
         return out
 
+    def get_byte_array(link):
+
+        img = Image.open(link, mode='r')
+
+        img_byte_arr = io.BytesIO()
+        img.save(img_byte_arr, format='PNG')
+        img_byte_arr = img_byte_arr.getvalue()
+
+        return img_byte_arr
+
     @staticmethod
     def encode(base, *img_list, display=False):
         img = Pixels.create_image(Pixels.xor_list(base, *img_list))
@@ -37,9 +47,11 @@ class Pixels:
         return img
 
 
-# if __name__ == "__main__":
-#     kon = Pixels.open('images/kon.jpg')
-#     rnm = Pixels.open('images/rnm.png')
-#     homer = Pixels.open('images/homer.jpg')
-#     mixed = Pixels.encode(kon, rnm, homer)
-#     ret = Pixels.encode(mixed.load(), kon, rnm, display=True)
+
+if __name__ == "__main__":
+    # kon = Pixels.open('images/kon.jpg')
+    # rnm = Pixels.open('images/rnm.png')
+    # homer = Pixels.open('images/homer.jpg')
+    # mixed = Pixels.encode(kon, rnm, homer)
+    # ret = Pixels.encode(mixed.load(), kon, rnm, display=True)
+    print(Pixels.get_byte_array('images/kon.jpg'))
