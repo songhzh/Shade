@@ -20,24 +20,34 @@ class Encryption:
         self.message_bitstream = Bitstream(message_bit_array)
 
     def encode(self):
-        return_message = BitArray()
-        message_ended = False
-        message_iterator = iter(self.message_bitstream)
-        for bit in self.key_bitstream:
-            # if bit == 1 and not message_ended:
-            #     try:
-            #         return_message.append(next(message_iterator))
-            #     except StopIteration:
-            #         return_message.append(random.getrandbits(1))
-            #         message_ended = True
-            # else:
-            #     return_message.append(random.getrandbits(1))
-            if bit == 1:
-                return_message.append(1)
-            else:
-                return_message.append(0)
+        ret = BitArray()
+        it = iter(self.message_bitstream)
+        for kb in self.key_bitstream:
+            try:
+               app = BitArray(uint=next(it), length=1) if kb == 1 else BitArray(uint=0, length=1)
+               ret.append(app)
+            except StopIteration:
+                app = BitArray(uint=0, length=1)
+                ret.append(app)
+        return ret
 
-        return return_message
+        # message_ended = False
+        # message_iterator = iter(self.message_bitstream)
+        # for bit in self.key_bitstream:
+        #     # if bit == 1 and not message_ended:
+        #     #     try:
+        #     #         return_message.append(next(message_iterator))
+        #     #     except StopIteration:
+        #     #         return_message.append(random.getrandbits(1))
+        #     #         message_ended = True
+        #     # else:
+        #     #     return_message.append(random.getrandbits(1))
+        #     if bit == 1:
+        #         return_message.append(1)
+        #     else:
+        #         return_message.append(0)
+        #
+        # return return_message
 
     # @staticmethod
     # def convert_key(public_key):

@@ -32,6 +32,9 @@ class Bitstream:
     def __str__(self):
         return str(self.bit_array.bin)
 
+    def __len__(self):
+        return len(self.bit_array)
+
 
 if __name__ == '__main__':
     data = Bitstream.get_bit_array('hackathon.txt')
