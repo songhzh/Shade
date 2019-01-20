@@ -54,7 +54,8 @@ if __name__ == "__main__":
     kon = Pixels.open('images/kon.jpg')
     rnm = Pixels.open('images/rnm.png')
     homer = Pixels.open('images/homer.jpg')
-    mixed = Pixels.encode(kon, rnm, homer, display=True)
+    mixed = Pixels.encode(kon, rnm, homer)
+    ret = Pixels.encode(mixed.load(), kon, rnm, display=True)
 
     # list_1 = pix.encode(pix.key, pix.img_1)
     # mid = pix.create_image(list_1)
