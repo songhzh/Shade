@@ -1,7 +1,3 @@
-from PIL import Image
-import os
-
-
 class Encryption:
     def __init__(self, file_to_encrypt):
         self.file_to_encrypt = file_to_encrypt
