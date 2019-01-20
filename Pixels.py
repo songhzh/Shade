@@ -71,9 +71,7 @@ if __name__ == "__main__":
     key = Pixels.encode(kon, rnm, homer)
     key.save('images/key.png')
 
-    # ret = Pixels.encode(mixed.load(), kon, rnm, display=True)
     ba = Pixels.get_bit_array(key)
-    print(ba)
     ls = Pixels.get_img(ba)
     Pixels.create_image(ls, display=True)
 
