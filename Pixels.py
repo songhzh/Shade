@@ -66,9 +66,13 @@ if __name__ == "__main__":
     kon = Pixels.open('images/kon.jpg')
     rnm = Pixels.open('images/rnm.png')
     homer = Pixels.open('images/homer.jpg')
-    mixed = Pixels.encode(kon, rnm, homer)
+
+    key = Pixels.encode(kon, rnm, homer)
+    key.save('images/key.png')
+
     # ret = Pixels.encode(mixed.load(), kon, rnm, display=True)
-    ba = Pixels.get_bit_array(mixed)
+    ba = Pixels.get_bit_array(key)
+    print(ba)
     ls = Pixels.get_img(ba)
     Pixels.create_image(ls, display=True)
 

@@ -1,5 +1,6 @@
 from bitstring import BitArray
 
+
 class Bitstream:
     def __init__(self, bit_array):
         self.bit_array = bit_array
