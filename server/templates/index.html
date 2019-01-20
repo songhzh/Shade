@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
 		<link rel="stylesheet" href="stylesheets/main.css"/>
         <link rel="icon" type= "image/png" href="/images/painterly.png" />
+        <link href="https://fonts.googleapis.com/css?family=Ropa+Sans|Teko" rel="stylesheet">
 	</head>
 	
 	<body>
@@ -26,14 +27,21 @@
                 <div class="description" id="opening-statement">
                     
                     <p>
-                        Upload you 
-                        </p>
+                        Upload the image you wish to decrypt    
+                    </p>
                         
-                    <a class="huge ui inverted floated right labeled icon button" href="/about">
+                    <!-- <a class="huge ui black floated right labeled icon button">
                         Upload
-                        <i class="right arrow icon"></i>
-                    </a>
-    
+                        <i class="download icon"></i>
+                    </a> -->
+                    <form action="/upload" method="post" enctype="multipart/form-data" >
+                        <label  class="ui huge black floated button">
+                                <i class="ui upload icon"></i> 
+                                Upload image   <input type="file" name="image" class="inputfile">
+                        </label>
+                        <br>
+                      <input type="submit" value="Decrypt" class="huge ui black upload icon button">
+                    </form>
                 </div>
             
     </div>
