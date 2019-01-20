@@ -3,17 +3,17 @@ Pitching a Hackathon, Brittany Lamorie:
 - Pitch can make or break a project
 
 - Know the judges
-	* Techinical Judge: Actaully understands effort put in
+	* Technical Judge: Actually understands effort put in
 	* Business/Big Sponsor Judge: Don't necessarily know the effort you put in
 	* Recruitment Judge
 	
 - How to pitch (Simple Formula)
 	* Introduce team and project (First 15 seconds)
-		- Introduce your teamates
+		- Introduce your teammates
 		- Include what discipline and what year you're in for engineering
 		
 	* Introduce Problem (next 30 seconds)
-		- Define what your project is trying to solve/ acheive
+		- Define what your project is trying to solve/ achieve
 	
 	* Demo Project (next 2-3 minutes)
 		* SHOW EVERY FEATURE YOU DEVELOPED
@@ -22,12 +22,12 @@ Pitching a Hackathon, Brittany Lamorie:
 		* Show enthusiasm
 	
 	* High Level Design (Next 1-2 minutes)
-		- This is your chance to show the judges what you acheived in your time
-			* This is mostly for Non-Techinical judges
+		- This is your chance to show the judges what you achieved in your time
+			* This is mostly for Non-Technical judges
 			* Make it known you did a lot of work
 			* Try mentioning 'plans for the future'
 			
 	* Thank the judges (Final 10 seconds)
 	
 - Other things of note:
-	* Presentor (Who is a judge) reccomended a slideshow
+	* Presenter (Who is a judge) recommended a slide show
