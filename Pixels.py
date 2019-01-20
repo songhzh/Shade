@@ -1,4 +1,5 @@
 from PIL import Image
+from bitstring import BitArray
 import io
 
 class Pixels:
@@ -30,15 +31,22 @@ class Pixels:
         return out
 
     @staticmethod
-    def get_byte_array(link):
+    def get_bit_array(image):
+        bits = BitArray()
+        data = image.getdata()
 
-        img = Image.open(link, mode='r')
+        for r, g, b in data:
+            bits.append(bin(r))
+            bits.append(bin(g))
+            bits.append(bin(b))
 
-        img_byte_arr = io.BytesIO()
-        img.save(img_byte_arr, format='PNG')
-        img_byte_arr = img_byte_arr.getvalue()
+        return bits
 
-        return img_byte_arr
+        # img = Image.open(link, mode='r')
+        # img_byte_arr = io.BytesIO()
+        # img.save(img_byte_arr, format='PNG')
+        # img_byte_arr = img_byte_arr.getvalue()
+        # return BitArray(img_byte_arr)
 
     @staticmethod
     def encode(base, *img_list, display=False):
@@ -49,9 +57,9 @@ class Pixels:
 
 
 if __name__ == "__main__":
-    # kon = Pixels.open('images/kon.jpg')
-    # rnm = Pixels.open('images/rnm.png')
-    # homer = Pixels.open('images/homer.jpg')
-    # mixed = Pixels.encode(kon, rnm, homer)
+    kon = Pixels.open('images/kon.jpg')
+    rnm = Pixels.open('images/rnm.png')
+    homer = Pixels.open('images/homer.jpg')
+    mixed = Pixels.encode(kon, rnm, homer)
     # ret = Pixels.encode(mixed.load(), kon, rnm, display=True)
-    print(Pixels.get_byte_array('images/kon.jpg'))
+    print(Pixels.get_bit_array(mixed))
